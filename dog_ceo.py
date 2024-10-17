@@ -33,7 +33,7 @@ def show_image():
             # new_window = Toplevel(window)
             # new_window.title("Случайное изображение")
             tab = ttk.Frame(notebook)
-            notebook.add(tab, text="Картинка")
+            notebook.add(tab, text=f"Картинка №{notebook.index('end') + 1}")
             lb = ttk.Label(tab, image=img)
             lb.pack(padx=10, pady=10)
             lb.image = img
