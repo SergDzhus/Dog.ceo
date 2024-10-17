@@ -66,11 +66,13 @@ width_label = ttk.Label(text="Ширина:")
 width_label.pack(side="left", padx=(10, 0))
 width_spinbox = ttk.Spinbox(from_=200, to=500, increment=50, width=5)
 width_spinbox.pack(side="left", padx=(0, 10))
+width_spinbox.set(300)
 
 heigth_label = ttk.Label(text="Высота:")
 heigth_label.pack(side="left", padx=(10,0))
 heigth_spinbox = ttk.Spinbox(from_=200, to=500, increment=50, width=5)
 heigth_spinbox.pack(side="left", padx=(0, 10))
+heigth_spinbox.set(300)
 
 top_level_window = Toplevel(window)
 top_level_window.title("Изображение собачек")
