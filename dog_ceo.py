@@ -28,8 +28,11 @@ def show_image():
             img_size = (int(width_spinbox.get()), int(heigth_spinbox.get()))
             img.thumbnail(img_size)
             img = ImageTk.PhotoImage(img)
-            label.config(image=img)
-            label.image = img
+            new_window = Toplevel(window)
+            new_window.title("Случайное изображение")
+            lb = ttk.Label(new_window, image=img)
+            lb.pack()
+            lb.image = img
         except Exception as e:
             mb.showerror("Ошибка",f"Возникла ошибка при загрузке изображения {e}")
     progress.stop()
