@@ -5,6 +5,8 @@ import requests
 from PIL import Image, ImageTk
 from io import BytesIO
 
+from PIL.ImageOps import expand
+
 
 def get_dog_image():
     try:
@@ -28,10 +30,12 @@ def show_image():
             img_size = (int(width_spinbox.get()), int(heigth_spinbox.get()))
             img.thumbnail(img_size)
             img = ImageTk.PhotoImage(img)
-            new_window = Toplevel(window)
-            new_window.title("Случайное изображение")
-            lb = ttk.Label(new_window, image=img)
-            lb.pack()
+            # new_window = Toplevel(window)
+            # new_window.title("Случайное изображение")
+            tab = ttk.Frame(notebook)
+            notebook.add(tab, text="Картинка")
+            lb = ttk.Label(tab, image=img)
+            lb.pack(padx=10, pady=10)
             lb.image = img
         except Exception as e:
             mb.showerror("Ошибка",f"Возникла ошибка при загрузке изображения {e}")
@@ -66,5 +70,11 @@ heigth_label = ttk.Label(text="Высота:")
 heigth_label.pack(side="left", padx=(10,0))
 heigth_spinbox = ttk.Spinbox(from_=200, to=500, increment=50, width=5)
 heigth_spinbox.pack(side="left", padx=(0, 10))
+
+top_level_window = Toplevel(window)
+top_level_window.title("Изображение собачек")
+
+notebook = ttk.Notebook(top_level_window)
+notebook.pack(expand=True, fill='both', padx=10, pady=10)
 
 window.mainloop()
